@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+        <h1>New post</h1>
+        <input type="radio" checked name="raz"/> <input type="radio" name="raz"/> <input type="radio" name="raz"/>
+
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+
+{% else %}
+    <h1>Please <a href="/admin/login/?next=/">Login</a></h1>
+
+
+{% endif %}
+{% endblock %}
